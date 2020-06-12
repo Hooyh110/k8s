@@ -1,0 +1,68 @@
+apiVersion: v1
+kind: PersistentVolume
+metadata:
+  name: data-mysql-0
+  namespace: default
+spec:
+  storageClassName: data-mysql-0
+  capacity:
+    storage: 10Gi
+  accessModes:
+    - ReadWriteMany
+  persistentVolumeReclaimPolicy: Retain
+  local:
+    path: /data/mysql01
+  nodeAffinity:
+    required:
+      nodeSelectorTerms:
+      - matchExpressions:
+        - key: kubernetes.io/hostname
+          operator: In
+          values:
+          - private-node01
+---
+apiVersion: v1
+kind: PersistentVolume
+metadata:
+  name: data-mysql-1
+  namespace: default
+spec:
+  storageClassName: data-mysql-1
+  capacity:
+    storage: 10Gi
+  accessModes:
+    - ReadWriteMany
+  persistentVolumeReclaimPolicy: Retain
+  local:
+    path: /data/mysql02
+  nodeAffinity:
+    required:
+      nodeSelectorTerms:
+      - matchExpressions:
+        - key: kubernetes.io/hostname
+          operator: In
+          values:
+          - private-node01
+---
+apiVersion: v1
+kind: PersistentVolume
+metadata:
+  name: data-mysql-2
+  namespace: default
+spec:
+  storageClassName: data-mysql-2
+  capacity:
+    storage: 10Gi
+  accessModes:
+    - ReadWriteMany
+  persistentVolumeReclaimPolicy: Retain
+  local:
+    path: /data/mysql03
+  nodeAffinity:
+    required:
+      nodeSelectorTerms:
+      - matchExpressions:
+        - key: kubernetes.io/hostname
+          operator: In
+          values:
+          - private-node01
